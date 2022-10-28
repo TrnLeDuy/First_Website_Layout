@@ -1,0 +1,55 @@
+.wrapper{
+    padding-top:20px;
+    background-color: #D8004F;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    border: 3px solid gray;
+    border-radius: 15px;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    background-color: honeydew;
+}
+form{
+    width: 700px;
+}
+.cart-total{
+    background-color: blanchedalmond;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.btns{
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #D8004F;
+}
+.btn-success{
+    margin-right: 45px;
+}
+.submit-buttons{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@media(max-width: 575px){
+    .container{
+        padding-top: 50px;
+    }
+    .shippingdetails{
+        position:relative;
+        top: 100px
+    }
+    .donutlogo{
+        position: relative;
+        bottom: 70px;
+        left: 190px;
+    }
+}

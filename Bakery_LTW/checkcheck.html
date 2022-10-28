@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thông tin thanh toán</title>
+    <link rel="stylesheet" href="css/thanhtoan.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	<script>
+		function SubForm (){
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/20890/",
+				type:"post",
+				data:$("#myForm").serializeArray(),
+				success: function(){
+					alert("Form Data Submitted :)")
+				},
+				error: function(){
+					alert("There was an error :(")
+				}
+			});
+		}
+	</script>
+</head>
+<body onload='FP()'>
+    <div class="wrapper">
+        <div class="container">
+	        <form id="myForm">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1 class="shippingdetails">
+                            <i class="fas fa-shipping-fast"></i>
+                            Shipping Details
+                        </h1>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="donutlogo" src="img/logo.png" alt="donutlogo" style="width:150px; height: 130px;">
+                    </div>
+                </div> 
+                <h3>Thông Tin Khách Hàng</h3>
+                <div class="row name">
+                    <div class="col-sm-6">
+                        <label>Họ :</label>
+                        <input name="firstname" /> <br>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Tên :</label>
+                        <input name="lastname"  /> <br>
+                    </div>
+                </div>
+                <div>
+                    <label>Số Điện Thoại</label>
+                    <input name="phone"type="text" /> <br>
+                </div>
+                
+                <h3>Địa Chỉ Nhận Hàng</h3>
+                <div class="row">
+                    <div class="col-md-4 street">
+                        <label>Địa chỉ</label>
+                        <input name="address" /> <br>        
+                    </div>
+                    <div class="col-md-4">
+                        <label>Thành phố</label>
+                        <input name="city" /> <br>
+                    </div>
+                    <div class="col-md-4"> 
+                        <label>Quận/Huyện</label>
+                        <input name="state" /> <br>
+                    </div>
+                </div>
+                <h1>
+                    <i class="far fa-credit-card"></i> Payment Information
+                </h1>
+                <h3>Phương thức thanh toán :</h3>
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                      <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Thanh toán khi nhận hàng.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                      <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Chuyển khoản
+                    </label>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 cc-num">
+                        <label>Card-num</label>
+                        <input name="card-num" /> <br>  
+                    </div>
+                    <div class="col-md-4">
+                        <label>Expire</label>
+		                <input name="expire" /> <br>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Security</label>
+		                <input name="security" /> <br>
+                    </div>
+                </div>
+                <div class="cart-total">
+                    <strong class="cart-total-title">TỔNG CỘNG : </strong>
+                    <span class="total-price"></span>
+                </div>
+                    
+	        </form> <!--end form-->
+        </div> <!--container-->
+    </div> <!--wrapper-->
+    <div class="btns">
+        <div class="row">
+            <div class="col-sm-4 submit-buttons">
+                <a href="Tranggioithieu.html"><button type="button" class="btn btn-primary btn-block">Back to Cart</button></a>
+            </div>
+            <div class="col-sm-8 submit-buttons">
+                <button onclick='SubForm()' type="button" class="btn btn-success btn-block">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function FP() {
+         var price=localStorage.getItem('totalPrice');
+         document.getElementsByClassName("total-price")[0].innerHTML=price;
+        }
+    </script>
+</body>
+</html>
